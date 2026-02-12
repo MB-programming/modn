@@ -13,27 +13,21 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            /* ── colours extracted from ramadan card ── */
-            --bg:       #050C1B;
-            --navy:     #07132A;
-            --teal:     #00C896;
-            --teal-dim: rgba(0, 200, 150, 0.15);
-            --blue:     #0048D4;
-            --blue-dim: rgba(0, 72, 212, 0.20);
-            --white:    #FFFFFF;
+            --bg:    #050C1B;
+            --teal:  #00C896;
+            --blue:  #0048D4;
         }
 
         html, body {
-            height: 100%;
             font-family: 'ModonFont', 'Segoe UI', Arial, sans-serif;
             background: var(--bg);
-            color: var(--white);
+            color: #fff;
             overflow-x: hidden;
         }
 
-        /* ═══════════════════════════════════════
+        /* ══════════════════════════════
            HERO
-        ═══════════════════════════════════════ */
+        ══════════════════════════════ */
         .hero {
             min-height: 100vh;
             position: relative;
@@ -41,153 +35,208 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 70px 20px 80px;
+            padding: 70px 20px 90px;
             overflow: hidden;
         }
 
-        /* ── base gradient (dark navy like the card) ── */
         .hero-bg {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background:
-                radial-gradient(ellipse 90% 60% at 50% 0%,   rgba(0,200,150,0.18) 0%, transparent 65%),
-                radial-gradient(ellipse 55% 50% at 90% 95%,  rgba(0,72,212,0.35)  0%, transparent 55%),
-                radial-gradient(ellipse 55% 50% at 10% 95%,  rgba(0,72,212,0.30)  0%, transparent 55%),
+                radial-gradient(ellipse 90% 60% at 50% 0%,  rgba(0,200,150,.18) 0%, transparent 65%),
+                radial-gradient(ellipse 55% 50% at 90% 95%, rgba(0,72,212,.35)  0%, transparent 55%),
+                radial-gradient(ellipse 55% 50% at 10% 95%, rgba(0,72,212,.30)  0%, transparent 55%),
                 linear-gradient(180deg, #05101F 0%, #071628 55%, #040D1A 100%);
         }
-
-        /* ── teal "moon" glow at top ── */
         .glow-moon {
-            position: absolute;
-            top: -180px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0,200,150,0.22) 0%, transparent 65%);
-            border-radius: 50%;
-            pointer-events: none;
+            position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
+            width: 600px; height: 600px; border-radius: 50%; pointer-events: none;
+            background: radial-gradient(circle, rgba(0,200,150,.22) 0%, transparent 65%);
         }
-
-        /* ── blue bottom orbs ── */
         .glow-bl {
-            position: absolute;
-            bottom: -100px;
-            left: -80px;
-            width: 340px;
-            height: 340px;
-            background: radial-gradient(circle, rgba(0,72,212,0.28) 0%, transparent 65%);
-            border-radius: 50%;
-            pointer-events: none;
+            position: absolute; bottom: -100px; left: -80px;
+            width: 340px; height: 340px; border-radius: 50%; pointer-events: none;
+            background: radial-gradient(circle, rgba(0,72,212,.28) 0%, transparent 65%);
         }
         .glow-br {
-            position: absolute;
-            bottom: -100px;
-            right: -80px;
-            width: 340px;
-            height: 340px;
-            background: radial-gradient(circle, rgba(0,72,212,0.22) 0%, transparent 65%);
-            border-radius: 50%;
-            pointer-events: none;
+            position: absolute; bottom: -100px; right: -80px;
+            width: 340px; height: 340px; border-radius: 50%; pointer-events: none;
+            background: radial-gradient(circle, rgba(0,72,212,.22) 0%, transparent 65%);
         }
-
-        /* ── dot grid ── */
         .hero-dots {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0; pointer-events: none; opacity: .22;
             background-image:
-                radial-gradient(circle, rgba(255,255,255,0.45) 1px, transparent 1px),
-                radial-gradient(circle, rgba(0,200,150,0.3)    1px, transparent 1px);
+                radial-gradient(circle, rgba(255,255,255,.45) 1px, transparent 1px),
+                radial-gradient(circle, rgba(0,200,150,.3)    1px, transparent 1px);
             background-size: 55px 55px, 95px 95px;
             background-position: 0 0, 27px 27px;
-            opacity: 0.22;
-            pointer-events: none;
         }
-
-        /* ── decorative rings ── */
         .ring {
-            position: absolute;
-            border: 1px solid rgba(0, 200, 150, 0.10);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
+            position: absolute; border-radius: 50%; pointer-events: none;
+            top: 50%; left: 50%; transform: translate(-50%,-50%);
+            border: 1px solid rgba(0,200,150,.10);
         }
         .ring-1 { width: 780px; height: 780px; }
-        .ring-2 { width: 560px; height: 560px; border-color: rgba(0,72,212,0.10); }
+        .ring-2 { width: 560px; height: 560px; border-color: rgba(0,72,212,.10); }
 
-        /* ── content wrapper ── */
+        /* content */
         .hero-content {
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
             text-align: center;
-            max-width: 560px;
-            width: 100%;
+            max-width: 620px; width: 100%;
         }
 
-        /* logo */
-        .logo-wrap { margin-bottom: 24px; }
+        .logo-wrap { margin-bottom: 22px; }
         .logo-wrap img {
-            height: 64px;
-            width: auto;
-            filter: brightness(0) invert(1);  /* force white */
-            drop-shadow: 0 0 20px rgba(0,200,150,0.4);
+            height: 62px; width: auto;
+            filter: brightness(0) invert(1);
         }
 
-        /* divider */
         .divider {
-            width: 90px;
-            height: 1px;
+            width: 90px; height: 1px; margin: 18px auto;
             background: linear-gradient(90deg, transparent, var(--teal) 30%, #7FFFD4 50%, var(--teal) 70%, transparent);
-            margin: 20px auto;
         }
 
         .hero-title {
             font-family: 'ModonFont', sans-serif;
-            font-size: 33px;
-            line-height: 1.5;
-            color: #fff;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+            font-size: 30px; line-height: 1.5;
+            color: #fff; margin-bottom: 6px;
+            text-shadow: 0 2px 20px rgba(0,0,0,.6);
         }
-
         .hero-sub {
-            font-size: 15px;
-            color: rgba(255,255,255,0.55);
-            line-height: 1.9;
-            margin-bottom: 36px;
+            font-size: 14px; color: rgba(255,255,255,.5);
+            line-height: 1.9; margin-bottom: 30px;
         }
 
-        /* input card */
+        /* ══════════════════════════════
+           STEP LABELS
+        ══════════════════════════════ */
+        .step-label {
+            font-family: 'ModonFont', sans-serif;
+            font-size: 13px;
+            color: rgba(0,200,150,.75);
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+
+        /* ══════════════════════════════
+           CARD PICKER
+        ══════════════════════════════ */
+        .card-picker {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 28px;
+        }
+
+        .thumb-wrap {
+            position: relative;
+            flex: 1;
+            max-width: 260px;
+            cursor: pointer;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,.08);
+            transition: transform .25s, border-color .25s, box-shadow .25s;
+        }
+
+        .thumb-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform .3s;
+        }
+
+        /* dim overlay while not selected */
+        .thumb-wrap::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: rgba(5,12,27,.45);
+            transition: opacity .25s;
+            pointer-events: none;
+        }
+
+        .thumb-wrap:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0,200,150,.5);
+            box-shadow: 0 12px 36px rgba(0,0,0,.5), 0 0 0 1px rgba(0,200,150,.3);
+        }
+        .thumb-wrap:hover::after { opacity: 0; }
+        .thumb-wrap:hover img { transform: scale(1.03); }
+
+        /* selected state */
+        .thumb-wrap.selected {
+            border-color: var(--teal);
+            box-shadow:
+                0 0 0 3px rgba(0,200,150,.25),
+                0 16px 48px rgba(0,0,0,.55),
+                0 0 30px rgba(0,200,150,.18);
+            transform: translateY(-4px);
+        }
+        .thumb-wrap.selected::after { opacity: 0; }
+        .thumb-wrap.selected img { transform: scale(1.03); }
+
+        /* checkmark badge */
+        .check-badge {
+            position: absolute;
+            top: 10px; left: 10px;       /* left = visual right in RTL */
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: var(--teal);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; color: #03100A;
+            opacity: 0;
+            transform: scale(.6);
+            transition: opacity .2s, transform .25s cubic-bezier(.34,1.5,.64,1);
+            z-index: 2;
+            pointer-events: none;
+        }
+        .thumb-wrap.selected .check-badge {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* card label under thumbnail */
+        .thumb-name {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 22px 8px 8px;
+            font-size: 12px;
+            color: rgba(255,255,255,.7);
+            background: linear-gradient(transparent, rgba(5,12,27,.85));
+            text-align: center;
+            letter-spacing: 1px;
+            pointer-events: none;
+        }
+
+        /* ══════════════════════════════
+           INPUT CARD
+        ══════════════════════════════ */
         .input-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(0,200,150,0.2);
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(0,200,150,.2);
             border-radius: 22px;
-            padding: 32px 28px 26px;
+            padding: 26px 28px 22px;
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
-            box-shadow:
-                0 8px 40px rgba(0,0,0,0.35),
-                inset 0 1px 0 rgba(255,255,255,0.06),
-                0 0 0 1px rgba(0,200,150,0.06);
+            box-shadow: 0 8px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
+            transition: opacity .3s, transform .3s;
         }
 
         .input-label {
             font-family: 'ModonFont', sans-serif;
-            font-size: 16px;
-            color: rgba(0,200,150,0.85);
+            font-size: 15px;
+            color: rgba(0,200,150,.85);
             display: block;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             letter-spacing: 1px;
         }
 
         .name-input {
             width: 100%;
-            background: rgba(255,255,255,0.07);
-            border: 1.5px solid rgba(0,200,150,0.30);
+            background: rgba(255,255,255,.07);
+            border: 1.5px solid rgba(0,200,150,.30);
             border-radius: 13px;
-            padding: 15px 20px;
+            padding: 14px 20px;
             font-family: 'ModonFont', sans-serif;
             font-size: 22px;
             color: #fff;
@@ -196,93 +245,67 @@
             outline: none;
             transition: border-color .3s, box-shadow .3s, background .3s;
         }
-
-        .name-input::placeholder { color: rgba(255,255,255,0.22); font-size: 16px; }
-
+        .name-input::placeholder { color: rgba(255,255,255,.22); font-size: 15px; }
         .name-input:focus {
             border-color: var(--teal);
-            background: rgba(0,200,150,0.06);
-            box-shadow: 0 0 0 3px rgba(0,200,150,0.14), 0 4px 20px rgba(0,0,0,0.25);
+            background: rgba(0,200,150,.06);
+            box-shadow: 0 0 0 3px rgba(0,200,150,.14), 0 4px 20px rgba(0,0,0,.25);
         }
-
         .name-input.error {
             border-color: #e05555;
-            box-shadow: 0 0 0 3px rgba(224,85,85,0.15);
+            box-shadow: 0 0 0 3px rgba(224,85,85,.15);
         }
 
         .generate-btn {
-            width: 100%;
-            margin-top: 16px;
+            width: 100%; margin-top: 14px;
             background: linear-gradient(135deg, #007A5A 0%, var(--teal) 40%, #4FFFD4 60%, var(--teal) 80%, #007A5A 100%);
             background-size: 220% 100%;
-            border: none;
-            border-radius: 13px;
-            padding: 16px 24px;
+            border: none; border-radius: 13px;
+            padding: 15px 24px;
             font-family: 'ModonFont', sans-serif;
-            font-size: 18px;
-            color: #03100A;
-            font-weight: bold;
-            cursor: pointer;
-            letter-spacing: 1px;
-            transition: background-position .4s, transform .2s, box-shadow .3s;
-            position: relative;
-            overflow: hidden;
+            font-size: 17px; color: #03100A; font-weight: bold;
+            cursor: pointer; letter-spacing: 1px;
+            transition: background-position .4s, transform .2s, box-shadow .3s, opacity .3s;
+            position: relative; overflow: hidden;
         }
-
         .generate-btn::after {
             content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 55%);
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,.14) 0%, transparent 55%);
             pointer-events: none;
         }
-
-        .generate-btn:hover {
+        .generate-btn:not(:disabled):hover {
             background-position: right center;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,200,150,0.45);
+            box-shadow: 0 10px 30px rgba(0,200,150,.45);
+        }
+        .generate-btn:not(:disabled):active { transform: translateY(0); }
+        .generate-btn:disabled {
+            opacity: .4; cursor: not-allowed;
         }
 
-        .generate-btn:active { transform: translateY(0); }
-
-        /* scroll hint */
-        .scroll-hint {
-            position: absolute;
-            bottom: 26px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255,255,255,0.28);
+        /* hint when no card selected */
+        .pick-hint {
+            margin-top: 10px;
             font-size: 13px;
-            white-space: nowrap;
-            animation: pulse-down 2.4s ease-in-out infinite;
+            color: rgba(255,255,255,.35);
+            min-height: 18px;
+            transition: opacity .3s;
         }
 
-        @keyframes pulse-down {
-            0%,100% { opacity:.28; transform: translateX(-50%) translateY(0); }
-            50%      { opacity:.55; transform: translateX(-50%) translateY(8px); }
-        }
-
-        /* ═══════════════════════════════════════
-           MODAL / POPUP
-        ═══════════════════════════════════════ */
+        /* ══════════════════════════════
+           MODAL
+        ══════════════════════════════ */
         .modal-overlay {
             display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 100;
-            /* frosted-glass overlay */
-            background: rgba(4, 9, 27, 0.72);
+            position: fixed; inset: 0; z-index: 100;
+            background: rgba(4,9,27,.72);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
-            align-items: center;
-            justify-content: center;
+            align-items: center; justify-content: center;
             padding: 20px;
-            animation: overlayIn .3s ease;
         }
-
-        .modal-overlay.open {
-            display: flex;
-        }
+        .modal-overlay.open { display: flex; animation: overlayIn .3s ease; }
 
         @keyframes overlayIn {
             from { opacity: 0; }
@@ -291,111 +314,78 @@
 
         .modal-box {
             position: relative;
-            max-width: 460px;
-            width: 100%;
+            max-width: 460px; width: 100%;
             animation: cardPop .4s cubic-bezier(.34,1.4,.64,1);
         }
-
         @keyframes cardPop {
-            from { opacity: 0; transform: scale(.85) translateY(30px); }
+            from { opacity: 0; transform: scale(.85) translateY(28px); }
             to   { opacity: 1; transform: scale(1)   translateY(0); }
         }
 
-        /* close button */
         .modal-close {
-            position: absolute;
-            top: -14px;
-            left: -14px;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
-            font-size: 18px;
-            line-height: 1;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-            transition: background .2s;
+            position: absolute; top: -14px; left: -14px;
+            width: 36px; height: 36px; border-radius: 50%;
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.2);
+            color: #fff; font-size: 18px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 2; transition: background .2s;
         }
+        .modal-close:hover { background: rgba(255,255,255,.22); }
 
-        .modal-close:hover { background: rgba(255,255,255,0.22); }
-
-        /* card frame */
         .modal-card-frame {
-            border-radius: 18px;
-            overflow: hidden;
+            border-radius: 18px; overflow: hidden;
             box-shadow:
-                0 40px 100px rgba(0,0,0,0.75),
-                0 0 0 1px rgba(0,200,150,0.22),
-                0 0 50px rgba(0,200,150,0.10);
+                0 40px 100px rgba(0,0,0,.75),
+                0 0 0 1px rgba(0,200,150,.22),
+                0 0 50px rgba(0,200,150,.10);
         }
 
-        #greetingCanvas {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        #greetingCanvas { width: 100%; height: auto; display: block; }
 
-        /* action buttons below card */
         .modal-actions {
             margin-top: 18px;
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
+            display: flex; gap: 12px;
+            justify-content: center; flex-wrap: wrap;
         }
 
         .act-btn {
-            padding: 13px 32px;
-            border-radius: 12px;
+            padding: 13px 32px; border-radius: 12px;
             font-family: 'ModonFont', sans-serif;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            transition: all .3s;
-            letter-spacing: .5px;
+            font-size: 16px; cursor: pointer;
+            border: none; transition: all .3s; letter-spacing: .5px;
         }
-
         .download-btn {
             background: linear-gradient(135deg, #007A5A, var(--teal), #007A5A);
             background-size: 200% 100%;
-            color: #03100A;
-            font-weight: bold;
+            color: #03100A; font-weight: bold;
         }
-
         .download-btn:hover {
             background-position: right center;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,200,150,0.4);
+            box-shadow: 0 8px 24px rgba(0,200,150,.4);
         }
-
         .back-btn {
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.14);
-            color: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.14);
+            color: rgba(255,255,255,.8);
         }
-
-        .back-btn:hover {
-            background: rgba(255,255,255,0.12);
-        }
+        .back-btn:hover { background: rgba(255,255,255,.12); }
 
         /* responsive */
-        @media (max-width: 480px) {
-            .logo-wrap img { height: 50px; }
-            .hero-title    { font-size: 25px; }
-            .input-card    { padding: 22px 16px; }
-            .name-input    { font-size: 19px; }
+        @media (max-width: 500px) {
+            .logo-wrap img  { height: 50px; }
+            .hero-title     { font-size: 24px; }
+            .card-picker    { gap: 10px; }
+            .input-card     { padding: 20px 14px; }
+            .name-input     { font-size: 19px; }
         }
     </style>
 </head>
 <body>
 
-<!-- ═══════════════════  HERO  ═══════════════════ -->
-<section class="hero" id="heroSection">
+<!-- ════════  HERO  ════════ -->
+<section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-dots"></div>
     <div class="glow-moon"></div>
@@ -413,30 +403,53 @@
         <div class="divider"></div>
 
         <h1 class="hero-title">بطاقة تهنئة رمضان الكريم</h1>
-        <p class="hero-sub">أدخل اسمك وستحصل على بطاقة تهنئة رمضانية خاصة بك من مدن</p>
+        <p class="hero-sub">اختر التصميم، اكتب اسمك، واحصل على بطاقتك الخاصة</p>
+
+        <!-- ── Step 1: pick card ── -->
+        <div class="step-label">① &nbsp; اختر التصميم</div>
+
+        <div class="card-picker">
+
+            <div class="thumb-wrap" id="thumb-1" onclick="selectCard('ramadan.jpeg', this)">
+                <div class="check-badge">✓</div>
+                <img src="ramadan.jpeg" alt="التصميم الأول" loading="lazy">
+                <div class="thumb-name">التصميم الأول</div>
+            </div>
+
+            <div class="thumb-wrap" id="thumb-2" onclick="selectCard('ramadan-2.jpeg', this)">
+                <div class="check-badge">✓</div>
+                <img src="ramadan-2.jpeg" alt="التصميم الثاني" loading="lazy">
+                <div class="thumb-name">التصميم الثاني</div>
+            </div>
+
+        </div>
+
+        <!-- ── Step 2: enter name ── -->
+        <div class="step-label">② &nbsp; اكتب اسمك</div>
 
         <div class="input-card">
-            <label class="input-label" for="nameInput">✦ &nbsp; اكتب اسمك &nbsp; ✦</label>
+            <label class="input-label" for="nameInput">✦ &nbsp; الاسم &nbsp; ✦</label>
             <input
                 type="text"
                 id="nameInput"
                 class="name-input"
-                placeholder="الاسم هنا..."
+                placeholder="اكتب اسمك هنا..."
                 autocomplete="off"
                 maxlength="40"
             />
-            <button class="generate-btn" onclick="generateCard()">أنشئ بطاقتك الآن</button>
+            <button class="generate-btn" id="generateBtn" onclick="generateCard()" disabled>
+                أنشئ بطاقتك الآن
+            </button>
+            <div class="pick-hint" id="pickHint">اختر تصميماً أولاً</div>
         </div>
 
     </div>
-
-    <div class="scroll-hint">▾ &nbsp; اضغط الزر لعرض بطاقتك &nbsp; ▾</div>
 </section>
 
 
-<!-- ═══════════════════  MODAL  ═══════════════════ -->
+<!-- ════════  MODAL  ════════ -->
 <div class="modal-overlay" id="cardModal" onclick="handleOverlayClick(event)">
-    <div class="modal-box" id="modalBox">
+    <div class="modal-box">
 
         <button class="modal-close" onclick="closeModal()" title="إغلاق">✕</button>
 
@@ -446,7 +459,7 @@
 
         <div class="modal-actions">
             <button class="act-btn download-btn" onclick="downloadCard()">⬇ &nbsp; تحميل البطاقة</button>
-            <button class="act-btn back-btn"     onclick="closeModal()">← &nbsp; تغيير الاسم</button>
+            <button class="act-btn back-btn"     onclick="closeModal()">← &nbsp; تغيير</button>
         </div>
 
     </div>
@@ -454,22 +467,35 @@
 
 
 <script>
-    // ─────────────────────────────────────────────────
-    //  nameY  — fraction of image height from the top.
-    //  Increase to push the name further down the card.
-    // ─────────────────────────────────────────────────
-    const CFG = {
-        nameX:      0.50,    // centred horizontally
-        nameY:      0.735,   // ← moved lower (was 0.655)
-        fontScale:  0.072,   // fontSize = imageWidth × fontScale
-        fontColor:  '#FFFFFF',
-        shadowColor:'rgba(0,0,0,0.7)',
-        shadowBlur: 14,
+    // ─────────────────────────────────────────────────────
+    //  Per-card config. nameY = vertical fraction (0→1).
+    //  Adjust per card if name positions differ.
+    // ─────────────────────────────────────────────────────
+    const CARDS = {
+        'ramadan.jpeg':   { nameX: .50, nameY: .735, fontScale: .072, fontColor: '#FFFFFF', shadowColor: 'rgba(0,0,0,.7)', shadowBlur: 14 },
+        'ramadan-2.jpeg': { nameX: .50, nameY: .735, fontScale: .072, fontColor: '#FFFFFF', shadowColor: 'rgba(0,0,0,.7)', shadowBlur: 14 },
     };
 
-    let currentName = '';
+    let selectedCard = null;   // file name
+    let currentName  = '';
 
+    // ── select card ─────────────────────────────────────
+    function selectCard(file, el) {
+        // deselect all
+        document.querySelectorAll('.thumb-wrap').forEach(t => t.classList.remove('selected'));
+        el.classList.add('selected');
+
+        selectedCard = file;
+
+        // enable generate button & clear hint
+        document.getElementById('generateBtn').disabled = false;
+        document.getElementById('pickHint').textContent = '';
+    }
+
+    // ── generate ─────────────────────────────────────────
     function generateCard() {
+        if (!selectedCard) return;
+
         const inp  = document.getElementById('nameInput');
         const name = inp.value.trim();
 
@@ -481,7 +507,7 @@
         }
 
         currentName = name;
-
+        const cfg   = CARDS[selectedCard];
         const canvas = document.getElementById('greetingCanvas');
         const ctx    = canvas.getContext('2d');
         const img    = new Image();
@@ -493,30 +519,28 @@
 
             ctx.drawImage(img, 0, 0);
 
-            const fontSize = Math.round(img.width * CFG.fontScale);
-            const x = img.width  * CFG.nameX;
-            const y = img.height * CFG.nameY;
+            const fontSize = Math.round(img.width * cfg.fontScale);
+            const x = img.width  * cfg.nameX;
+            const y = img.height * cfg.nameY;
 
             ctx.save();
             ctx.font         = `${fontSize}px ModonFont, Arial`;
-            ctx.fillStyle    = CFG.fontColor;
+            ctx.fillStyle    = cfg.fontColor;
             ctx.textAlign    = 'center';
             ctx.textBaseline = 'middle';
-            ctx.shadowColor  = CFG.shadowColor;
-            ctx.shadowBlur   = CFG.shadowBlur;
+            ctx.shadowColor  = cfg.shadowColor;
+            ctx.shadowBlur   = cfg.shadowBlur;
             ctx.fillText(name, x, y);
             ctx.restore();
 
             openModal();
         };
 
-        img.onerror = function () {
-            alert('تعذّر تحميل صورة البطاقة.\nتأكد من وجود ملف ramadan.jpeg في نفس المجلد.');
-        };
-
-        img.src = 'ramadan.jpeg';
+        img.onerror = () => alert(`تعذّر تحميل الصورة: ${selectedCard}`);
+        img.src = selectedCard;
     }
 
+    // ── modal helpers ────────────────────────────────────
     function openModal() {
         document.getElementById('cardModal').classList.add('open');
         document.body.style.overflow = 'hidden';
@@ -529,20 +553,16 @@
     }
 
     function handleOverlayClick(e) {
-        // close only when clicking the dark overlay itself, not the card box
         if (e.target === document.getElementById('cardModal')) closeModal();
     }
 
+    // ── download ─────────────────────────────────────────
     function downloadCard() {
         const canvas   = document.getElementById('greetingCanvas');
         const filename = `بطاقة-رمضان-${currentName}.png`;
 
-        // toBlob is more reliable than toDataURL across browsers
         canvas.toBlob(function (blob) {
-            if (!blob) {
-                alert('تعذّر إنشاء الصورة. حاول مرة أخرى.');
-                return;
-            }
+            if (!blob) { alert('تعذّر إنشاء الصورة. حاول مرة أخرى.'); return; }
             const url  = URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href     = url;
@@ -554,10 +574,10 @@
         }, 'image/png');
     }
 
+    // ── keyboard ─────────────────────────────────────────
     document.getElementById('nameInput').addEventListener('keydown', e => {
         if (e.key === 'Enter') generateCard();
     });
-
     document.addEventListener('keydown', e => {
         if (e.key === 'Escape') closeModal();
     });
