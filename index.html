@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطاقة تهنئة رمضان - مدن</title>
+    <style>
+        @font-face {
+            font-family: 'ModonFont';
+            src: url('font.otf') format('opentype');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'ModonFont', 'Segoe UI', Arial, sans-serif;
+            background: #04091E;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ===================== HERO ===================== */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            overflow: hidden;
+            background: #060D2E;
+        }
+
+        /* layered gradient background */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% -10%, rgba(196,156,63,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 100% 100%, rgba(10,40,120,0.6) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 0% 100%, rgba(5,20,80,0.6) 0%, transparent 60%),
+                linear-gradient(180deg, #060D2E 0%, #0B1B5F 50%, #060D2E 100%);
+        }
+
+        /* geometric decorative lines */
+        .hero-lines {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .hero-lines::before,
+        .hero-lines::after {
+            content: '';
+            position: absolute;
+            border: 1px solid rgba(196, 156, 63, 0.12);
+            border-radius: 50%;
+        }
+
+        .hero-lines::before {
+            width: 700px;
+            height: 700px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-lines::after {
+            width: 500px;
+            height: 500px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* dot pattern */
+        .hero-dots {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px),
+                radial-gradient(circle, rgba(196,156,63,0.35) 1px, transparent 1px);
+            background-size: 60px 60px, 100px 100px;
+            background-position: 0 0, 30px 30px;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        /* gold glow corners */
+        .glow-tl {
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(196,156,63,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .glow-br {
+            position: absolute;
+            bottom: -120px;
+            left: -120px;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(196,156,63,0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* ---- content ---- */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 560px;
+            width: 100%;
+        }
+
+        /* Logo block */
+        .logo-wrap {
+            margin-bottom: 28px;
+        }
+
+        .logo-ar {
+            font-family: 'ModonFont', sans-serif;
+            font-size: 56px;
+            color: #C49C3F;
+            line-height: 1;
+            text-shadow: 0 0 40px rgba(196,156,63,0.5), 0 2px 8px rgba(0,0,0,0.4);
+            letter-spacing: 2px;
+        }
+
+        .logo-en {
+            font-size: 11px;
+            letter-spacing: 5px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 6px;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #C49C3F 30%, #F0C060 50%, #C49C3F 70%, transparent);
+            margin: 22px auto;
+        }
+
+        .hero-title {
+            font-family: 'ModonFont', sans-serif;
+            font-size: 32px;
+            line-height: 1.5;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+        }
+
+        .hero-sub {
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.8;
+            margin-bottom: 36px;
+        }
+
+        /* Input card */
+        .input-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(196,156,63,0.25);
+            border-radius: 20px;
+            padding: 32px 28px 28px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+
+        .input-label {
+            font-family: 'ModonFont', sans-serif;
+            font-size: 16px;
+            color: rgba(196,156,63,0.9);
+            display: block;
+            margin-bottom: 14px;
+            letter-spacing: 1px;
+        }
+
+        .name-input {
+            width: 100%;
+            background: rgba(255,255,255,0.07);
+            border: 1.5px solid rgba(196,156,63,0.35);
+            border-radius: 12px;
+            padding: 15px 20px;
+            font-family: 'ModonFont', sans-serif;
+            font-size: 22px;
+            color: #fff;
+            text-align: center;
+            direction: rtl;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .name-input::placeholder {
+            color: rgba(255,255,255,0.25);
+            font-size: 16px;
+        }
+
+        .name-input:focus {
+            border-color: #C49C3F;
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 0 0 3px rgba(196,156,63,0.15), 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .name-input.error {
+            border-color: #e05555;
+            box-shadow: 0 0 0 3px rgba(224,85,85,0.15);
+        }
+
+        .generate-btn {
+            width: 100%;
+            margin-top: 16px;
+            background: linear-gradient(135deg, #b8882e 0%, #E8B84B 40%, #F5CC6A 60%, #E8B84B 80%, #b8882e 100%);
+            background-size: 200% 100%;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 24px;
+            font-family: 'ModonFont', sans-serif;
+            font-size: 18px;
+            color: #04091E;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background-position 0.4s, transform 0.2s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .generate-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .generate-btn:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(196,156,63,0.45);
+        }
+
+        .generate-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(196,156,63,0.3);
+        }
+
+        /* scroll hint */
+        .scroll-hint {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.3);
+            font-size: 13px;
+            text-align: center;
+            animation: pulse-down 2.2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-down {
+            0%, 100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
+            50%       { opacity: 0.6; transform: translateX(-50%) translateY(7px); }
+        }
+
+        /* ===================== CARD SECTION ===================== */
+        #cardSection {
+            display: none;
+            background: linear-gradient(180deg, #04091E 0%, #060D2E 100%);
+            min-height: 100vh;
+            padding: 70px 20px 60px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        #cardSection.show { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-heading {
+            font-family: 'ModonFont', sans-serif;
+            font-size: 30px;
+            color: #C49C3F;
+            margin-bottom: 6px;
+        }
+
+        .card-sub {
+            font-size: 14px;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 44px;
+        }
+
+        .card-frame {
+            display: inline-block;
+            position: relative;
+            max-width: 480px;
+            width: 100%;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow:
+                0 40px 100px rgba(0,0,0,0.7),
+                0 0 0 1px rgba(196,156,63,0.2),
+                0 0 60px rgba(196,156,63,0.12);
+        }
+
+        #greetingCanvas {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* actions */
+        .card-actions {
+            margin-top: 32px;
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .act-btn {
+            padding: 14px 36px;
+            border-radius: 12px;
+            font-family: 'ModonFont', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            letter-spacing: 0.5px;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #b8882e, #E8B84B, #b8882e);
+            background-size: 200% 100%;
+            color: #04091E;
+            font-weight: bold;
+        }
+
+        .download-btn:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(196,156,63,0.4);
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.8);
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.25);
+        }
+
+        /* responsive */
+        @media (max-width: 480px) {
+            .logo-ar     { font-size: 44px; }
+            .hero-title  { font-size: 24px; }
+            .input-card  { padding: 22px 18px; }
+            .name-input  { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="heroSection">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-dots"></div>
+    <div class="glow-tl"></div>
+    <div class="glow-br"></div>
+
+    <div class="hero-content">
+
+        <div class="logo-wrap">
+            <div class="logo-ar">مدن</div>
+            <div class="logo-en">MODON · Saudi Authority for Industrial Cities</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h1 class="hero-title">بطاقة تهنئة رمضان الكريم</h1>
+        <p class="hero-sub">أدخل اسمك وستحصل على بطاقة تهنئة رمضانية خاصة بك من مدن</p>
+
+        <div class="input-card">
+            <label class="input-label" for="nameInput">✦ &nbsp; اكتب اسمك &nbsp; ✦</label>
+            <input
+                type="text"
+                id="nameInput"
+                class="name-input"
+                placeholder="الاسم هنا..."
+                autocomplete="off"
+                maxlength="40"
+            />
+            <button class="generate-btn" onclick="generateCard()">أنشئ بطاقتك الآن</button>
+        </div>
+
+    </div>
+
+    <div class="scroll-hint">▾ &nbsp; بطاقتك ستظهر هنا &nbsp; ▾</div>
+</section>
+
+
+<!-- ==================== CARD RESULT ==================== -->
+<section id="cardSection">
+    <div class="card-heading">بطاقتك جاهزة!</div>
+    <div class="card-sub">يمكنك تحميلها ومشاركتها مع أصحابك وعائلتك</div>
+
+    <div class="card-frame">
+        <canvas id="greetingCanvas"></canvas>
+    </div>
+
+    <div class="card-actions">
+        <button class="act-btn download-btn" onclick="downloadCard()">⬇ &nbsp; تحميل البطاقة</button>
+        <button class="act-btn back-btn"     onclick="goBack()">← &nbsp; تغيير الاسم</button>
+    </div>
+</section>
+
+
+<script>
+    // ─────────────────────────────────────────────────
+    //  CONFIGURATION  — adjust nameY to fine-tune where
+    //  the name appears on the ramadan.jpeg card image.
+    //  All values are a fraction of the image dimension.
+    // ─────────────────────────────────────────────────
+    const CFG = {
+        nameX:      0.50,   // horizontal centre (50 %)
+        nameY:      0.655,  // vertical position  — adjust to match the rectangle on your card
+        fontScale:  0.075,  // font size = image_width × fontScale
+        fontColor:  '#FFFFFF',
+        shadowColor:'rgba(0,0,0,0.65)',
+        shadowBlur: 12,
+    };
+
+    let currentName = '';
+
+    // ── generate ──────────────────────────────────────
+    function generateCard() {
+        const inp  = document.getElementById('nameInput');
+        const name = inp.value.trim();
+
+        if (!name) {
+            inp.classList.add('error');
+            inp.focus();
+            setTimeout(() => inp.classList.remove('error'), 1200);
+            return;
+        }
+
+        currentName = name;
+
+        const canvas = document.getElementById('greetingCanvas');
+        const ctx    = canvas.getContext('2d');
+        const img    = new Image();
+
+        img.onload = function () {
+            canvas.width  = img.width;
+            canvas.height = img.height;
+
+            // 1. draw card image
+            ctx.drawImage(img, 0, 0);
+
+            // 2. calculate positions
+            const fontSize = Math.round(img.width * CFG.fontScale);
+            const x = img.width  * CFG.nameX;
+            const y = img.height * CFG.nameY;
+
+            // 3. draw name
+            ctx.save();
+            ctx.font          = `${fontSize}px ModonFont, Arial`;
+            ctx.fillStyle     = CFG.fontColor;
+            ctx.textAlign     = 'center';
+            ctx.textBaseline  = 'middle';
+            ctx.shadowColor   = CFG.shadowColor;
+            ctx.shadowBlur    = CFG.shadowBlur;
+            ctx.fillText(name, x, y);
+            ctx.restore();
+
+            // 4. reveal card section
+            const sec = document.getElementById('cardSection');
+            sec.classList.add('show');
+            setTimeout(() => sec.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+        };
+
+        img.onerror = function () {
+            alert('تعذّر تحميل صورة البطاقة.\nتأكد من وجود ملف ramadan.jpeg في نفس المجلد.');
+        };
+
+        img.src = 'ramadan.jpeg';
+    }
+
+    // ── download ──────────────────────────────────────
+    function downloadCard() {
+        const canvas = document.getElementById('greetingCanvas');
+        const link   = document.createElement('a');
+        link.download = `بطاقة-رمضان-${currentName}.png`;
+        link.href     = canvas.toDataURL('image/png');
+        link.click();
+    }
+
+    // ── back ──────────────────────────────────────────
+    function goBack() {
+        document.getElementById('cardSection').classList.remove('show');
+        document.getElementById('heroSection').scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => document.getElementById('nameInput').focus(), 500);
+    }
+
+    // ── Enter key ─────────────────────────────────────
+    document.getElementById('nameInput').addEventListener('keydown', e => {
+        if (e.key === 'Enter') generateCard();
+    });
+</script>
+
+</body>
+</html>
