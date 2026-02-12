@@ -86,7 +86,7 @@
         /* ──  Logo  ── */
         .logo-wrap { margin-bottom: 18px; }
         .logo-wrap img {
-            height: 58px; width: auto;
+            height: 80px; width: auto;
             filter: brightness(0) invert(1);
         }
 
@@ -457,12 +457,12 @@
             <div class="card-picker">
                 <div class="thumb-wrap" onclick="selectCard('ramadan.jpeg', this)">
                     <div class="check-badge">✓</div>
-                    <img id="img-ramadan" src="ramadan.jpeg" alt="التصميم الأول">
+                    <img id="img-ramadan" src="ramadan.jpeg" crossorigin="anonymous" alt="التصميم الأول">
                     <div class="thumb-name">التصميم الأول</div>
                 </div>
                 <div class="thumb-wrap" onclick="selectCard('ramadan-2.jpeg', this)">
                     <div class="check-badge">✓</div>
-                    <img id="img-ramadan-2" src="ramadan-2.jpeg" alt="التصميم الثاني">
+                    <img id="img-ramadan-2" src="ramadan-2.jpeg" crossorigin="anonymous" alt="التصميم الثاني">
                     <div class="thumb-name">التصميم الثاني</div>
                 </div>
             </div>
@@ -528,7 +528,7 @@
     // ─────────────────────────────────────────────────────────
     const CARDS = {
         'ramadan.jpeg':   { imgId: 'img-ramadan',   nameX: .50, nameY: .735, fontScale: .072, fontColor: '#FFFFFF', shadowColor: 'rgba(0,0,0,.7)', shadowBlur: 14 },
-        'ramadan-2.jpeg': { imgId: 'img-ramadan-2', nameX: .50, nameY: .720, fontScale: .072, fontColor: '#FFFFFF', shadowColor: 'rgba(0,0,0,.7)', shadowBlur: 14 },
+        'ramadan-2.jpeg': { imgId: 'img-ramadan-2', nameX: .50, nameY: .780, fontScale: .072, fontColor: '#FFFFFF', shadowColor: 'rgba(0,0,0,.7)', shadowBlur: 14 },
     };
 
     let selectedCard = null;
