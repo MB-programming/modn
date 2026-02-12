@@ -13,9 +13,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg:    #050C1B;
-            --teal:  #00C896;
-            --blue:  #0048D4;
+            --bg:   #050C1B;
+            --teal: #00C896;
+            --blue: #0048D4;
         }
 
         html, body {
@@ -23,11 +23,10 @@
             background: var(--bg);
             color: #fff;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* ══════════════════════════════
-           HERO
-        ══════════════════════════════ */
+        /* ══════════  BACKGROUND  ══════════ */
         .hero {
             min-height: 100vh;
             position: relative;
@@ -35,229 +34,191 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 70px 20px 90px;
+            padding: 60px 20px 80px;
             overflow: hidden;
         }
 
         .hero-bg {
             position: absolute; inset: 0;
             background:
-                radial-gradient(ellipse 90% 60% at 50% 0%,  rgba(0,200,150,.18) 0%, transparent 65%),
-                radial-gradient(ellipse 55% 50% at 90% 95%, rgba(0,72,212,.35)  0%, transparent 55%),
-                radial-gradient(ellipse 55% 50% at 10% 95%, rgba(0,72,212,.30)  0%, transparent 55%),
+                radial-gradient(ellipse 90% 55% at 50% 0%,  rgba(0,200,150,.18) 0%, transparent 60%),
+                radial-gradient(ellipse 55% 45% at 90% 95%, rgba(0,72,212,.35)  0%, transparent 55%),
+                radial-gradient(ellipse 55% 45% at 10% 95%, rgba(0,72,212,.30)  0%, transparent 55%),
                 linear-gradient(180deg, #05101F 0%, #071628 55%, #040D1A 100%);
         }
         .glow-moon {
-            position: absolute; top: -180px; left: 50%; transform: translateX(-50%);
-            width: 600px; height: 600px; border-radius: 50%; pointer-events: none;
-            background: radial-gradient(circle, rgba(0,200,150,.22) 0%, transparent 65%);
+            position: absolute; top: -160px; left: 50%; transform: translateX(-50%);
+            width: 560px; height: 560px; border-radius: 50%; pointer-events: none;
+            background: radial-gradient(circle, rgba(0,200,150,.20) 0%, transparent 65%);
         }
         .glow-bl {
-            position: absolute; bottom: -100px; left: -80px;
-            width: 340px; height: 340px; border-radius: 50%; pointer-events: none;
+            position: absolute; bottom: -90px; left: -70px;
+            width: 300px; height: 300px; border-radius: 50%; pointer-events: none;
             background: radial-gradient(circle, rgba(0,72,212,.28) 0%, transparent 65%);
         }
         .glow-br {
-            position: absolute; bottom: -100px; right: -80px;
-            width: 340px; height: 340px; border-radius: 50%; pointer-events: none;
+            position: absolute; bottom: -90px; right: -70px;
+            width: 300px; height: 300px; border-radius: 50%; pointer-events: none;
             background: radial-gradient(circle, rgba(0,72,212,.22) 0%, transparent 65%);
         }
         .hero-dots {
-            position: absolute; inset: 0; pointer-events: none; opacity: .22;
+            position: absolute; inset: 0; pointer-events: none; opacity: .18;
             background-image:
-                radial-gradient(circle, rgba(255,255,255,.45) 1px, transparent 1px),
-                radial-gradient(circle, rgba(0,200,150,.3)    1px, transparent 1px);
+                radial-gradient(circle, rgba(255,255,255,.5)  1px, transparent 1px),
+                radial-gradient(circle, rgba(0,200,150,.35)   1px, transparent 1px);
             background-size: 55px 55px, 95px 95px;
             background-position: 0 0, 27px 27px;
         }
         .ring {
             position: absolute; border-radius: 50%; pointer-events: none;
             top: 50%; left: 50%; transform: translate(-50%,-50%);
-            border: 1px solid rgba(0,200,150,.10);
         }
-        .ring-1 { width: 780px; height: 780px; }
-        .ring-2 { width: 560px; height: 560px; border-color: rgba(0,72,212,.10); }
+        .ring-1 { width: 760px; height: 760px; border: 1px solid rgba(0,200,150,.08); }
+        .ring-2 { width: 540px; height: 540px; border: 1px solid rgba(0,72,212,.08);  }
 
-        /* content */
-        .hero-content {
+        /* ══════════  WRAPPER  ══════════ */
+        .wizard {
             position: relative; z-index: 2;
+            width: 100%; max-width: 640px;
             text-align: center;
-            max-width: 620px; width: 100%;
         }
 
-        .logo-wrap { margin-bottom: 22px; }
+        /* ──  Logo  ── */
+        .logo-wrap { margin-bottom: 18px; }
         .logo-wrap img {
-            height: 62px; width: auto;
+            height: 58px; width: auto;
             filter: brightness(0) invert(1);
         }
 
         .divider {
-            width: 90px; height: 1px; margin: 18px auto;
+            width: 80px; height: 1px; margin: 14px auto 20px;
             background: linear-gradient(90deg, transparent, var(--teal) 30%, #7FFFD4 50%, var(--teal) 70%, transparent);
         }
 
-        .hero-title {
-            font-family: 'ModonFont', sans-serif;
-            font-size: 30px; line-height: 1.5;
-            color: #fff; margin-bottom: 6px;
-            text-shadow: 0 2px 20px rgba(0,0,0,.6);
+        .wizard-title {
+            font-size: 28px; line-height: 1.5; color: #fff;
+            margin-bottom: 6px;
+            text-shadow: 0 2px 18px rgba(0,0,0,.55);
         }
-        .hero-sub {
-            font-size: 14px; color: rgba(255,255,255,.5);
-            line-height: 1.9; margin-bottom: 30px;
-        }
-
-        /* ══════════════════════════════
-           STEP LABELS
-        ══════════════════════════════ */
-        .step-label {
-            font-family: 'ModonFont', sans-serif;
-            font-size: 13px;
-            color: rgba(0,200,150,.75);
-            letter-spacing: 2px;
-            margin-bottom: 14px;
+        .wizard-sub {
+            font-size: 13px; color: rgba(255,255,255,.45);
+            margin-bottom: 28px; line-height: 1.8;
         }
 
-        /* ══════════════════════════════
-           CARD PICKER
-        ══════════════════════════════ */
-        .card-picker {
-            display: flex;
-            gap: 16px;
+        /* ──  Step indicator  ── */
+        .step-bar {
+            display: flex; align-items: center;
             justify-content: center;
-            margin-bottom: 28px;
+            gap: 0; margin-bottom: 28px;
+        }
+        .step-dot {
+            width: 34px; height: 34px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: bold;
+            border: 2px solid rgba(255,255,255,.15);
+            color: rgba(255,255,255,.35);
+            background: rgba(255,255,255,.04);
+            transition: all .35s;
+            position: relative; z-index: 1;
+        }
+        .step-dot.active {
+            border-color: var(--teal);
+            color: var(--teal);
+            background: rgba(0,200,150,.10);
+            box-shadow: 0 0 14px rgba(0,200,150,.3);
+        }
+        .step-dot.done {
+            border-color: var(--teal);
+            background: var(--teal);
+            color: #03100A;
+        }
+        .step-line {
+            width: 60px; height: 2px;
+            background: rgba(255,255,255,.1);
+            transition: background .4s;
+        }
+        .step-line.done { background: var(--teal); }
+
+        /* ══════════  PANELS  ══════════ */
+        .panel {
+            display: none;
+            animation: panelIn .35s ease;
+        }
+        .panel.active { display: block; }
+
+        @keyframes panelIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ══════════  STEP 1 — CARD PICKER  ══════════ */
+        .step-label {
+            font-size: 12px; letter-spacing: 2.5px;
+            color: rgba(0,200,150,.7); margin-bottom: 16px;
+        }
+
+        .card-picker {
+            display: flex; gap: 14px;
+            justify-content: center;
+            margin-bottom: 22px;
         }
 
         .thumb-wrap {
             position: relative;
-            flex: 1;
-            max-width: 260px;
+            flex: 1; max-width: 270px;
             cursor: pointer;
-            border-radius: 14px;
-            overflow: hidden;
+            border-radius: 14px; overflow: hidden;
             border: 2px solid rgba(255,255,255,.08);
             transition: transform .25s, border-color .25s, box-shadow .25s;
+            -webkit-tap-highlight-color: transparent;
         }
-
         .thumb-wrap img {
-            width: 100%;
-            height: auto;
-            display: block;
+            width: 100%; height: auto; display: block;
             transition: transform .3s;
         }
-
-        /* dim overlay while not selected */
+        /* dim overlay */
         .thumb-wrap::after {
             content: '';
             position: absolute; inset: 0;
             background: rgba(5,12,27,.45);
-            transition: opacity .25s;
-            pointer-events: none;
+            transition: opacity .25s; pointer-events: none;
         }
+        .thumb-wrap:hover { transform: translateY(-4px); border-color: rgba(0,200,150,.45); }
+        .thumb-wrap:hover::after  { opacity: 0; }
+        .thumb-wrap:hover img     { transform: scale(1.03); }
 
-        .thumb-wrap:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0,200,150,.5);
-            box-shadow: 0 12px 36px rgba(0,0,0,.5), 0 0 0 1px rgba(0,200,150,.3);
-        }
-        .thumb-wrap:hover::after { opacity: 0; }
-        .thumb-wrap:hover img { transform: scale(1.03); }
-
-        /* selected state */
         .thumb-wrap.selected {
             border-color: var(--teal);
-            box-shadow:
-                0 0 0 3px rgba(0,200,150,.25),
-                0 16px 48px rgba(0,0,0,.55),
-                0 0 30px rgba(0,200,150,.18);
-            transform: translateY(-4px);
+            transform: translateY(-5px);
+            box-shadow: 0 0 0 3px rgba(0,200,150,.22), 0 18px 50px rgba(0,0,0,.55), 0 0 28px rgba(0,200,150,.15);
         }
         .thumb-wrap.selected::after { opacity: 0; }
-        .thumb-wrap.selected img { transform: scale(1.03); }
+        .thumb-wrap.selected img    { transform: scale(1.03); }
 
-        /* checkmark badge */
+        /* checkmark */
         .check-badge {
-            position: absolute;
-            top: 10px; left: 10px;       /* left = visual right in RTL */
-            width: 28px; height: 28px;
-            border-radius: 50%;
+            position: absolute; top: 9px; left: 9px;
+            width: 26px; height: 26px; border-radius: 50%;
             background: var(--teal);
             display: flex; align-items: center; justify-content: center;
-            font-size: 14px; color: #03100A;
-            opacity: 0;
-            transform: scale(.6);
-            transition: opacity .2s, transform .25s cubic-bezier(.34,1.5,.64,1);
-            z-index: 2;
-            pointer-events: none;
+            font-size: 13px; color: #03100A; z-index: 2; pointer-events: none;
+            opacity: 0; transform: scale(.5);
+            transition: opacity .2s, transform .28s cubic-bezier(.34,1.6,.64,1);
         }
-        .thumb-wrap.selected .check-badge {
-            opacity: 1;
-            transform: scale(1);
-        }
+        .thumb-wrap.selected .check-badge { opacity: 1; transform: scale(1); }
 
-        /* card label under thumbnail */
+        /* card name label */
         .thumb-name {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 22px 8px 8px;
-            font-size: 12px;
-            color: rgba(255,255,255,.7);
-            background: linear-gradient(transparent, rgba(5,12,27,.85));
-            text-align: center;
-            letter-spacing: 1px;
-            pointer-events: none;
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 20px 8px 8px;
+            font-size: 11px; color: rgba(255,255,255,.65);
+            background: linear-gradient(transparent, rgba(5,12,27,.88));
+            letter-spacing: 1px; pointer-events: none;
         }
 
-        /* ══════════════════════════════
-           INPUT CARD
-        ══════════════════════════════ */
-        .input-card {
-            background: rgba(255,255,255,.04);
-            border: 1px solid rgba(0,200,150,.2);
-            border-radius: 22px;
-            padding: 26px 28px 22px;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            box-shadow: 0 8px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
-            transition: opacity .3s, transform .3s;
-        }
-
-        .input-label {
-            font-family: 'ModonFont', sans-serif;
-            font-size: 15px;
-            color: rgba(0,200,150,.85);
-            display: block;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-
-        .name-input {
+        /* Next button */
+        .next-btn {
             width: 100%;
-            background: rgba(255,255,255,.07);
-            border: 1.5px solid rgba(0,200,150,.30);
-            border-radius: 13px;
-            padding: 14px 20px;
-            font-family: 'ModonFont', sans-serif;
-            font-size: 22px;
-            color: #fff;
-            text-align: center;
-            direction: rtl;
-            outline: none;
-            transition: border-color .3s, box-shadow .3s, background .3s;
-        }
-        .name-input::placeholder { color: rgba(255,255,255,.22); font-size: 15px; }
-        .name-input:focus {
-            border-color: var(--teal);
-            background: rgba(0,200,150,.06);
-            box-shadow: 0 0 0 3px rgba(0,200,150,.14), 0 4px 20px rgba(0,0,0,.25);
-        }
-        .name-input.error {
-            border-color: #e05555;
-            box-shadow: 0 0 0 3px rgba(224,85,85,.15);
-        }
-
-        .generate-btn {
-            width: 100%; margin-top: 14px;
             background: linear-gradient(135deg, #007A5A 0%, var(--teal) 40%, #4FFFD4 60%, var(--teal) 80%, #007A5A 100%);
             background-size: 220% 100%;
             border: none; border-radius: 13px;
@@ -268,34 +229,128 @@
             transition: background-position .4s, transform .2s, box-shadow .3s, opacity .3s;
             position: relative; overflow: hidden;
         }
-        .generate-btn::after {
+        .next-btn::after {
             content: '';
             position: absolute; inset: 0;
-            background: linear-gradient(180deg, rgba(255,255,255,.14) 0%, transparent 55%);
+            background: linear-gradient(180deg, rgba(255,255,255,.13) 0%, transparent 55%);
             pointer-events: none;
         }
-        .generate-btn:not(:disabled):hover {
+        .next-btn:not(:disabled):hover {
             background-position: right center;
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(0,200,150,.45);
         }
-        .generate-btn:not(:disabled):active { transform: translateY(0); }
-        .generate-btn:disabled {
-            opacity: .4; cursor: not-allowed;
-        }
+        .next-btn:disabled { opacity: .35; cursor: not-allowed; }
 
-        /* hint when no card selected */
         .pick-hint {
-            margin-top: 10px;
-            font-size: 13px;
-            color: rgba(255,255,255,.35);
-            min-height: 18px;
-            transition: opacity .3s;
+            margin-top: 10px; font-size: 12px;
+            color: rgba(255,255,255,.3); min-height: 18px;
         }
 
-        /* ══════════════════════════════
-           MODAL
-        ══════════════════════════════ */
+        /* ══════════  STEP 2 — NAME INPUT  ══════════ */
+        .step2-layout {
+            display: flex; gap: 20px; align-items: flex-start;
+        }
+
+        /* mini preview of selected card */
+        .card-preview-mini {
+            flex-shrink: 0; width: 110px;
+            border-radius: 10px; overflow: hidden;
+            border: 2px solid rgba(0,200,150,.35);
+            box-shadow: 0 8px 24px rgba(0,0,0,.5), 0 0 16px rgba(0,200,150,.12);
+        }
+        .card-preview-mini img { width: 100%; height: auto; display: block; }
+
+        .input-side { flex: 1; }
+
+        .input-card {
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(0,200,150,.2);
+            border-radius: 18px;
+            padding: 22px 22px 18px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 8px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05);
+        }
+        .input-label {
+            font-size: 14px; color: rgba(0,200,150,.8);
+            display: block; margin-bottom: 10px; letter-spacing: 1px;
+        }
+        .name-input {
+            width: 100%;
+            background: rgba(255,255,255,.07);
+            border: 1.5px solid rgba(0,200,150,.28);
+            border-radius: 11px;
+            padding: 13px 16px;
+            font-family: 'ModonFont', sans-serif;
+            font-size: 20px; color: #fff;
+            text-align: center; direction: rtl; outline: none;
+            transition: border-color .3s, box-shadow .3s, background .3s;
+        }
+        .name-input::placeholder { color: rgba(255,255,255,.2); font-size: 14px; }
+        .name-input:focus {
+            border-color: var(--teal);
+            background: rgba(0,200,150,.06);
+            box-shadow: 0 0 0 3px rgba(0,200,150,.13), 0 4px 18px rgba(0,0,0,.2);
+        }
+        .name-input.error {
+            border-color: #e05555;
+            box-shadow: 0 0 0 3px rgba(224,85,85,.14);
+        }
+
+        .btn-row {
+            display: flex; gap: 10px; margin-top: 14px;
+        }
+        .generate-btn {
+            flex: 1;
+            background: linear-gradient(135deg, #007A5A 0%, var(--teal) 40%, #4FFFD4 60%, var(--teal) 80%, #007A5A 100%);
+            background-size: 220% 100%;
+            border: none; border-radius: 11px;
+            padding: 13px 10px;
+            font-family: 'ModonFont', sans-serif;
+            font-size: 15px; color: #03100A; font-weight: bold;
+            cursor: pointer; letter-spacing: 1px;
+            transition: background-position .4s, transform .2s, box-shadow .3s;
+            position: relative; overflow: hidden;
+        }
+        .generate-btn::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,.13) 0%, transparent 55%);
+            pointer-events: none;
+        }
+        .generate-btn:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,200,150,.42);
+        }
+        .back-link {
+            flex-shrink: 0;
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 11px;
+            padding: 13px 14px;
+            font-family: 'ModonFont', sans-serif;
+            font-size: 14px; color: rgba(255,255,255,.7);
+            cursor: pointer;
+            transition: background .2s;
+        }
+        .back-link:hover { background: rgba(255,255,255,.10); }
+
+        /* responsive */
+        @media (max-width: 500px) {
+            .logo-wrap img  { height: 48px; }
+            .wizard-title   { font-size: 22px; }
+            .card-picker    { gap: 10px; }
+            .step2-layout   { flex-direction: column; align-items: center; }
+            .card-preview-mini { width: 130px; }
+            .input-side     { width: 100%; }
+            .input-card     { padding: 18px 14px; }
+            .name-input     { font-size: 18px; }
+            .step-line      { width: 40px; }
+        }
+
+        /* ══════════  MODAL  ══════════ */
         .modal-overlay {
             display: none;
             position: fixed; inset: 0; z-index: 100;
@@ -306,11 +361,7 @@
             padding: 20px;
         }
         .modal-overlay.open { display: flex; animation: overlayIn .3s ease; }
-
-        @keyframes overlayIn {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
+        @keyframes overlayIn { from{opacity:0} to{opacity:1} }
 
         .modal-box {
             position: relative;
@@ -318,16 +369,16 @@
             animation: cardPop .4s cubic-bezier(.34,1.4,.64,1);
         }
         @keyframes cardPop {
-            from { opacity: 0; transform: scale(.85) translateY(28px); }
-            to   { opacity: 1; transform: scale(1)   translateY(0); }
+            from { opacity:0; transform:scale(.85) translateY(28px); }
+            to   { opacity:1; transform:scale(1)   translateY(0); }
         }
 
         .modal-close {
             position: absolute; top: -14px; left: -14px;
-            width: 36px; height: 36px; border-radius: 50%;
+            width: 34px; height: 34px; border-radius: 50%;
             background: rgba(255,255,255,.1);
             border: 1px solid rgba(255,255,255,.2);
-            color: #fff; font-size: 18px; cursor: pointer;
+            color: #fff; font-size: 17px; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             z-index: 2; transition: background .2s;
         }
@@ -340,51 +391,39 @@
                 0 0 0 1px rgba(0,200,150,.22),
                 0 0 50px rgba(0,200,150,.10);
         }
-
         #greetingCanvas { width: 100%; height: auto; display: block; }
 
         .modal-actions {
-            margin-top: 18px;
-            display: flex; gap: 12px;
+            margin-top: 16px;
+            display: flex; gap: 10px;
             justify-content: center; flex-wrap: wrap;
         }
-
         .act-btn {
-            padding: 13px 32px; border-radius: 12px;
+            padding: 12px 30px; border-radius: 11px;
             font-family: 'ModonFont', sans-serif;
-            font-size: 16px; cursor: pointer;
+            font-size: 15px; cursor: pointer;
             border: none; transition: all .3s; letter-spacing: .5px;
         }
         .download-btn {
             background: linear-gradient(135deg, #007A5A, var(--teal), #007A5A);
-            background-size: 200% 100%;
-            color: #03100A; font-weight: bold;
+            background-size: 200% 100%; color: #03100A; font-weight: bold;
         }
         .download-btn:hover {
             background-position: right center;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,200,150,.4);
+            box-shadow: 0 8px 22px rgba(0,200,150,.4);
         }
-        .back-btn {
+        .modal-back-btn {
             background: rgba(255,255,255,.06);
             border: 1px solid rgba(255,255,255,.14);
             color: rgba(255,255,255,.8);
         }
-        .back-btn:hover { background: rgba(255,255,255,.12); }
-
-        /* responsive */
-        @media (max-width: 500px) {
-            .logo-wrap img  { height: 50px; }
-            .hero-title     { font-size: 24px; }
-            .card-picker    { gap: 10px; }
-            .input-card     { padding: 20px 14px; }
-            .name-input     { font-size: 19px; }
-        }
+        .modal-back-btn:hover { background: rgba(255,255,255,.12); }
     </style>
 </head>
 <body>
 
-<!-- ════════  HERO  ════════ -->
+<!-- ════════  BACKGROUND  ════════ -->
 <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-dots"></div>
@@ -394,105 +433,150 @@
     <div class="ring ring-1"></div>
     <div class="ring ring-2"></div>
 
-    <div class="hero-content">
+    <div class="wizard">
 
+        <!-- Logo -->
         <div class="logo-wrap">
             <img src="Modon-01.png" alt="مدن – MODON">
         </div>
-
         <div class="divider"></div>
+        <h1 class="wizard-title">بطاقة تهنئة رمضان الكريم</h1>
+        <p class="wizard-sub">اختر التصميم، اكتب اسمك، واحصل على بطاقتك الخاصة</p>
 
-        <h1 class="hero-title">بطاقة تهنئة رمضان الكريم</h1>
-        <p class="hero-sub">اختر التصميم، اكتب اسمك، واحصل على بطاقتك الخاصة</p>
-
-        <!-- ── Step 1: pick card ── -->
-        <div class="step-label">① &nbsp; اختر التصميم</div>
-
-        <div class="card-picker">
-
-            <div class="thumb-wrap" id="thumb-1" onclick="selectCard('ramadan.jpeg', this)">
-                <div class="check-badge">✓</div>
-                <img src="ramadan.jpeg" alt="التصميم الأول" loading="lazy">
-                <div class="thumb-name">التصميم الأول</div>
-            </div>
-
-            <div class="thumb-wrap" id="thumb-2" onclick="selectCard('ramadan-2.jpeg', this)">
-                <div class="check-badge">✓</div>
-                <img src="ramadan-2.jpeg" alt="التصميم الثاني" loading="lazy">
-                <div class="thumb-name">التصميم الثاني</div>
-            </div>
-
+        <!-- Step indicator -->
+        <div class="step-bar">
+            <div class="step-dot active" id="dot1">١</div>
+            <div class="step-line"       id="line12"></div>
+            <div class="step-dot"        id="dot2">٢</div>
         </div>
 
-        <!-- ── Step 2: enter name ── -->
-        <div class="step-label">② &nbsp; اكتب اسمك</div>
+        <!-- ════  PANEL 1 — اختيار التصميم  ════ -->
+        <div class="panel active" id="panel1">
+            <div class="step-label">اختر التصميم المناسب</div>
 
-        <div class="input-card">
-            <label class="input-label" for="nameInput">✦ &nbsp; الاسم &nbsp; ✦</label>
-            <input
-                type="text"
-                id="nameInput"
-                class="name-input"
-                placeholder="اكتب اسمك هنا..."
-                autocomplete="off"
-                maxlength="40"
-            />
-            <button class="generate-btn" id="generateBtn" onclick="generateCard()" disabled>
-                أنشئ بطاقتك الآن
+            <div class="card-picker">
+                <div class="thumb-wrap" onclick="selectCard('ramadan.jpeg', this)">
+                    <div class="check-badge">✓</div>
+                    <img src="ramadan.jpeg" alt="التصميم الأول">
+                    <div class="thumb-name">التصميم الأول</div>
+                </div>
+                <div class="thumb-wrap" onclick="selectCard('ramadan-2.jpeg', this)">
+                    <div class="check-badge">✓</div>
+                    <img src="ramadan-2.jpeg" alt="التصميم الثاني">
+                    <div class="thumb-name">التصميم الثاني</div>
+                </div>
+            </div>
+
+            <button class="next-btn" id="nextBtn" disabled onclick="goToStep2()">
+                التالي &nbsp; ←
             </button>
-            <div class="pick-hint" id="pickHint">اختر تصميماً أولاً</div>
+            <div class="pick-hint" id="pickHint">اختر تصميماً للمتابعة</div>
         </div>
 
-    </div>
+        <!-- ════  PANEL 2 — كتابة الاسم  ════ -->
+        <div class="panel" id="panel2">
+            <div class="step-label">اكتب اسمك على البطاقة</div>
+
+            <div class="step2-layout">
+                <div class="card-preview-mini">
+                    <img id="previewImg" src="" alt="التصميم المختار">
+                </div>
+                <div class="input-side">
+                    <div class="input-card">
+                        <label class="input-label" for="nameInput">✦ &nbsp; الاسم &nbsp; ✦</label>
+                        <input
+                            type="text"
+                            id="nameInput"
+                            class="name-input"
+                            placeholder="اكتب اسمك..."
+                            autocomplete="off"
+                            maxlength="40"
+                        />
+                        <div class="btn-row">
+                            <button class="generate-btn" onclick="generateCard()">أنشئ البطاقة</button>
+                            <button class="back-link"    onclick="goToStep1()">← رجوع</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /wizard -->
 </section>
 
 
 <!-- ════════  MODAL  ════════ -->
 <div class="modal-overlay" id="cardModal" onclick="handleOverlayClick(event)">
     <div class="modal-box">
-
-        <button class="modal-close" onclick="closeModal()" title="إغلاق">✕</button>
-
+        <button class="modal-close" onclick="closeModal()">✕</button>
         <div class="modal-card-frame">
             <canvas id="greetingCanvas"></canvas>
         </div>
-
         <div class="modal-actions">
-            <button class="act-btn download-btn" onclick="downloadCard()">⬇ &nbsp; تحميل البطاقة</button>
-            <button class="act-btn back-btn"     onclick="closeModal()">← &nbsp; تغيير</button>
+            <button class="act-btn download-btn"  onclick="downloadCard()">⬇ &nbsp; تحميل البطاقة</button>
+            <button class="act-btn modal-back-btn" onclick="closeModal()">← &nbsp; تغيير</button>
         </div>
-
     </div>
 </div>
 
 
 <script>
-    // ─────────────────────────────────────────────────────
-    //  Per-card config. nameY = vertical fraction (0→1).
-    //  Adjust per card if name positions differ.
-    // ─────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────
+    //  Name position per card (fraction of image dimensions).
+    //  nameY for ramadan.jpeg  ≈ lower third
+    //  nameY for ramadan-2.jpeg ≈ slightly higher — adjust as needed
+    // ─────────────────────────────────────────────────────────
     const CARDS = {
         'ramadan.jpeg':   { nameX: .50, nameY: .735, fontScale: .072, fontColor: '#FFFFFF', shadowColor: 'rgba(0,0,0,.7)', shadowBlur: 14 },
-        'ramadan-2.jpeg': { nameX: .50, nameY: .735, fontScale: .072, fontColor: '#FFFFFF', shadowColor: 'rgba(0,0,0,.7)', shadowBlur: 14 },
+        'ramadan-2.jpeg': { nameX: .50, nameY: .660, fontScale: .072, fontColor: '#FFFFFF', shadowColor: 'rgba(0,0,0,.7)', shadowBlur: 14 },
     };
 
-    let selectedCard = null;   // file name
+    let selectedCard = null;
     let currentName  = '';
 
-    // ── select card ─────────────────────────────────────
+    // ── Step 1 logic ────────────────────────────────────────
     function selectCard(file, el) {
-        // deselect all
         document.querySelectorAll('.thumb-wrap').forEach(t => t.classList.remove('selected'));
         el.classList.add('selected');
-
         selectedCard = file;
-
-        // enable generate button & clear hint
-        document.getElementById('generateBtn').disabled = false;
+        document.getElementById('nextBtn').disabled  = false;
         document.getElementById('pickHint').textContent = '';
     }
 
-    // ── generate ─────────────────────────────────────────
+    function goToStep2() {
+        if (!selectedCard) return;
+
+        // update step indicator
+        document.getElementById('dot1').classList.replace('active', 'done');
+        document.getElementById('dot1').textContent = '✓';
+        document.getElementById('line12').classList.add('done');
+        document.getElementById('dot2').classList.add('active');
+
+        // show selected card thumbnail in step 2
+        document.getElementById('previewImg').src = selectedCard;
+
+        // switch panels
+        document.getElementById('panel1').classList.remove('active');
+        document.getElementById('panel2').classList.add('active');
+
+        setTimeout(() => document.getElementById('nameInput').focus(), 150);
+    }
+
+    function goToStep1() {
+        // reset step indicator
+        const dot1 = document.getElementById('dot1');
+        dot1.classList.remove('done');
+        dot1.classList.add('active');
+        dot1.textContent = '١';
+        document.getElementById('line12').classList.remove('done');
+        document.getElementById('dot2').classList.remove('active');
+
+        // switch panels
+        document.getElementById('panel2').classList.remove('active');
+        document.getElementById('panel1').classList.add('active');
+    }
+
+    // ── Generate ─────────────────────────────────────────────
     function generateCard() {
         if (!selectedCard) return;
 
@@ -516,13 +600,9 @@
         img.onload = function () {
             canvas.width  = img.width;
             canvas.height = img.height;
-
             ctx.drawImage(img, 0, 0);
 
             const fontSize = Math.round(img.width * cfg.fontScale);
-            const x = img.width  * cfg.nameX;
-            const y = img.height * cfg.nameY;
-
             ctx.save();
             ctx.font         = `${fontSize}px ModonFont, Arial`;
             ctx.fillStyle    = cfg.fontColor;
@@ -530,17 +610,17 @@
             ctx.textBaseline = 'middle';
             ctx.shadowColor  = cfg.shadowColor;
             ctx.shadowBlur   = cfg.shadowBlur;
-            ctx.fillText(name, x, y);
+            ctx.fillText(name, img.width * cfg.nameX, img.height * cfg.nameY);
             ctx.restore();
 
             openModal();
         };
 
-        img.onerror = () => alert(`تعذّر تحميل الصورة: ${selectedCard}`);
+        img.onerror = () => alert(`تعذّر تحميل الصورة: ${selectedCard}\nتأكد من رفع الملفات على السيرفر.`);
         img.src = selectedCard;
     }
 
-    // ── modal helpers ────────────────────────────────────
+    // ── Modal ────────────────────────────────────────────────
     function openModal() {
         document.getElementById('cardModal').classList.add('open');
         document.body.style.overflow = 'hidden';
@@ -549,14 +629,13 @@
     function closeModal() {
         document.getElementById('cardModal').classList.remove('open');
         document.body.style.overflow = '';
-        setTimeout(() => document.getElementById('nameInput').focus(), 300);
     }
 
     function handleOverlayClick(e) {
         if (e.target === document.getElementById('cardModal')) closeModal();
     }
 
-    // ── download ─────────────────────────────────────────
+    // ── Download ─────────────────────────────────────────────
     function downloadCard() {
         const canvas   = document.getElementById('greetingCanvas');
         const filename = `بطاقة-رمضان-${currentName}.png`;
@@ -574,7 +653,7 @@
         }, 'image/png');
     }
 
-    // ── keyboard ─────────────────────────────────────────
+    // ── Keyboard ─────────────────────────────────────────────
     document.getElementById('nameInput').addEventListener('keydown', e => {
         if (e.key === 'Enter') generateCard();
     });
