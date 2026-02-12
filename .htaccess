@@ -1,0 +1,7 @@
+Options -Indexes
+
+RewriteEngine On
+
+# Redirect everything to /ramadan/ unless already there
+RewriteCond %{REQUEST_URI} !^/ramadan/
+RewriteRule ^(.*)$ /ramadan/ [R=301,L]
