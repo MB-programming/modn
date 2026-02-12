@@ -577,7 +577,7 @@
     }
 
     // ── Generate ─────────────────────────────────────────────
-    function generateCard() {
+    async function generateCard() {
         if (!selectedCard) return;
 
         const inp  = document.getElementById('nameInput');
@@ -591,12 +591,23 @@
         }
 
         currentName = name;
-        const cfg   = CARDS[selectedCard];
+        const cfg    = CARDS[selectedCard];
         const canvas = document.getElementById('greetingCanvas');
         const ctx    = canvas.getContext('2d');
-        const img    = new Image();
-        img.crossOrigin = 'anonymous';
 
+        let blobUrl;
+        try {
+            // fetch as blob → object URL avoids all CORS / canvas-taint issues
+            const res  = await fetch(selectedCard);
+            if (!res.ok) throw new Error(res.status);
+            const blob = await res.blob();
+            blobUrl    = URL.createObjectURL(blob);
+        } catch (err) {
+            alert(`تعذّر تحميل الصورة: ${selectedCard}\nتأكد من رفع الملفات على السيرفر.`);
+            return;
+        }
+
+        const img = new Image();
         img.onload = function () {
             canvas.width  = img.width;
             canvas.height = img.height;
@@ -613,11 +624,10 @@
             ctx.fillText(name, img.width * cfg.nameX, img.height * cfg.nameY);
             ctx.restore();
 
+            URL.revokeObjectURL(blobUrl);
             openModal();
         };
-
-        img.onerror = () => alert(`تعذّر تحميل الصورة: ${selectedCard}\nتأكد من رفع الملفات على السيرفر.`);
-        img.src = selectedCard;
+        img.src = blobUrl;
     }
 
     // ── Modal ────────────────────────────────────────────────
