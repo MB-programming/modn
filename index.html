@@ -445,9 +445,9 @@
 
         <!-- Step indicator -->
         <div class="step-bar">
-            <div class="step-dot active" id="dot1">١</div>
+            <div class="step-dot active" id="dot1">1</div>
             <div class="step-line"       id="line12"></div>
-            <div class="step-dot"        id="dot2">٢</div>
+            <div class="step-dot"        id="dot2">2</div>
         </div>
 
         <!-- ════  PANEL 1 — اختيار التصميم  ════ -->
@@ -567,7 +567,7 @@
         const dot1 = document.getElementById('dot1');
         dot1.classList.remove('done');
         dot1.classList.add('active');
-        dot1.textContent = '١';
+        dot1.textContent = '1';
         document.getElementById('line12').classList.remove('done');
         document.getElementById('dot2').classList.remove('active');
 
@@ -638,20 +638,20 @@
 
     // ── Download ─────────────────────────────────────────────
     function downloadCard() {
-        const canvas   = document.getElementById('greetingCanvas');
-        const filename = `بطاقة-رمضان-${currentName}.png`;
-
-        canvas.toBlob(function (blob) {
-            if (!blob) { alert('تعذّر إنشاء الصورة. حاول مرة أخرى.'); return; }
-            const url  = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href     = url;
-            link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            setTimeout(() => URL.revokeObjectURL(url), 1000);
-        }, 'image/png');
+        const canvas = document.getElementById('greetingCanvas');
+        let dataURL;
+        try {
+            dataURL = canvas.toDataURL('image/png');
+        } catch (e) {
+            alert('تعذّر تحميل البطاقة.\nاضغط بزر الماوس الأيمن على الصورة واختر "حفظ الصورة باسم".');
+            return;
+        }
+        const link = document.createElement('a');
+        link.href     = dataURL;
+        link.download = `بطاقة-رمضان-${currentName}.png`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 
     // ── Keyboard ─────────────────────────────────────────────
