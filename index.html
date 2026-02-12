@@ -457,12 +457,12 @@
             <div class="card-picker">
                 <div class="thumb-wrap" onclick="selectCard('ramadan.jpeg', this)">
                     <div class="check-badge">✓</div>
-                    <img src="ramadan.jpeg" alt="التصميم الأول">
+                    <img id="img-ramadan" src="ramadan.jpeg" alt="التصميم الأول">
                     <div class="thumb-name">التصميم الأول</div>
                 </div>
                 <div class="thumb-wrap" onclick="selectCard('ramadan-2.jpeg', this)">
                     <div class="check-badge">✓</div>
-                    <img src="ramadan-2.jpeg" alt="التصميم الثاني">
+                    <img id="img-ramadan-2" src="ramadan-2.jpeg" alt="التصميم الثاني">
                     <div class="thumb-name">التصميم الثاني</div>
                 </div>
             </div>
@@ -527,8 +527,8 @@
     //  nameY for ramadan-2.jpeg ≈ slightly higher — adjust as needed
     // ─────────────────────────────────────────────────────────
     const CARDS = {
-        'ramadan.jpeg':   { nameX: .50, nameY: .735, fontScale: .072, fontColor: '#FFFFFF', shadowColor: 'rgba(0,0,0,.7)', shadowBlur: 14 },
-        'ramadan-2.jpeg': { nameX: .50, nameY: .660, fontScale: .072, fontColor: '#FFFFFF', shadowColor: 'rgba(0,0,0,.7)', shadowBlur: 14 },
+        'ramadan.jpeg':   { imgId: 'img-ramadan',   nameX: .50, nameY: .735, fontScale: .072, fontColor: '#FFFFFF', shadowColor: 'rgba(0,0,0,.7)', shadowBlur: 14 },
+        'ramadan-2.jpeg': { imgId: 'img-ramadan-2', nameX: .50, nameY: .660, fontScale: .072, fontColor: '#FFFFFF', shadowColor: 'rgba(0,0,0,.7)', shadowBlur: 14 },
     };
 
     let selectedCard = null;
@@ -577,7 +577,7 @@
     }
 
     // ── Generate ─────────────────────────────────────────────
-    async function generateCard() {
+    function generateCard() {
         if (!selectedCard) return;
 
         const inp  = document.getElementById('nameInput');
@@ -590,44 +590,35 @@
             return;
         }
 
-        currentName = name;
+        currentName  = name;
         const cfg    = CARDS[selectedCard];
         const canvas = document.getElementById('greetingCanvas');
         const ctx    = canvas.getContext('2d');
 
-        let blobUrl;
-        try {
-            // fetch as blob → object URL avoids all CORS / canvas-taint issues
-            const res  = await fetch(selectedCard);
-            if (!res.ok) throw new Error(res.status);
-            const blob = await res.blob();
-            blobUrl    = URL.createObjectURL(blob);
-        } catch (err) {
-            alert(`تعذّر تحميل الصورة: ${selectedCard}\nتأكد من رفع الملفات على السيرفر.`);
+        // reuse the already-loaded thumbnail img — no extra request, no CORS
+        const img = document.getElementById(cfg.imgId);
+
+        if (!img || !img.naturalWidth) {
+            alert('الصورة لم تكتمل بعد، حاول مرة أخرى.');
             return;
         }
 
-        const img = new Image();
-        img.onload = function () {
-            canvas.width  = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0);
+        canvas.width  = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);
 
-            const fontSize = Math.round(img.width * cfg.fontScale);
-            ctx.save();
-            ctx.font         = `${fontSize}px ModonFont, Arial`;
-            ctx.fillStyle    = cfg.fontColor;
-            ctx.textAlign    = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.shadowColor  = cfg.shadowColor;
-            ctx.shadowBlur   = cfg.shadowBlur;
-            ctx.fillText(name, img.width * cfg.nameX, img.height * cfg.nameY);
-            ctx.restore();
+        const fontSize = Math.round(img.naturalWidth * cfg.fontScale);
+        ctx.save();
+        ctx.font         = `${fontSize}px ModonFont, Arial`;
+        ctx.fillStyle    = cfg.fontColor;
+        ctx.textAlign    = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.shadowColor  = cfg.shadowColor;
+        ctx.shadowBlur   = cfg.shadowBlur;
+        ctx.fillText(name, img.naturalWidth * cfg.nameX, img.naturalHeight * cfg.nameY);
+        ctx.restore();
 
-            URL.revokeObjectURL(blobUrl);
-            openModal();
-        };
-        img.src = blobUrl;
+        openModal();
     }
 
     // ── Modal ────────────────────────────────────────────────
