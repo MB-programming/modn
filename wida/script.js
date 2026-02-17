@@ -131,7 +131,7 @@ function generateCard() {
         ctx.drawImage(img, 0, 0);
 
         const fontSize = Math.floor(canvas.height * config.fontScale);
-        ctx.font = `700 ${fontSize}px WidaFont, sans-serif`;
+        ctx.font = `700 ${fontSize}px ShaheenFont, sans-serif`;
         ctx.fillStyle = config.fontColor;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
