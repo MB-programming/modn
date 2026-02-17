@@ -280,3 +280,162 @@ body {
         max-height: 60vh;
     }
 }
+/* Hero Section */
+.hero-section {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 4rem;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.15), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15), transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.1), transparent 50%);
+    z-index: 0;
+}
+
+.hero-background::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background-image: url('assets/wida-ramadan-2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 10%;
+    left: 5%;
+    opacity: 0.15;
+    animation: float 20s ease-in-out infinite;
+}
+
+.hero-background::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-image: url('assets/wida-ramadan-2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    bottom: 10%;
+    right: 5%;
+    opacity: 0.1;
+    animation: float 25s ease-in-out infinite reverse;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.hero-logo {
+    max-width: 600px;
+    width: 90%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(139, 92, 246, 0.4));
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    color: var(--accent-purple);
+    margin-top: 2rem;
+    text-shadow: 0 2px 10px rgba(139, 92, 246, 0.3);
+    animation: fadeIn 2s ease-out 0.5s both;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-30px) rotate(5deg);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+/* Background Pattern for entire page */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        url('assets/wida-ramadan-2.png'),
+        url('assets/wida-ramadan-2.png'),
+        url('assets/wida-ramadan-2.png'),
+        url('assets/wida-ramadan-2.png');
+    background-size: 150px, 120px, 180px, 140px;
+    background-position: 
+        10% 15%,
+        90% 20%,
+        15% 85%,
+        85% 80%;
+    background-repeat: no-repeat;
+    opacity: 0.05;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 60vh;
+    }
+    
+    .hero-logo {
+        max-width: 400px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    
+    .hero-background::before,
+    .hero-background::after {
+        width: 200px;
+        height: 200px;
+    }
+}
