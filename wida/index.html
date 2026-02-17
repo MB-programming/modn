@@ -619,7 +619,10 @@
                     </div>
                     
                     <button class="generate-btn" onclick="generateCard()">
-                        ✨ إنشاء البطاقة
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-left: 8px;">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        إنشاء البطاقة
                     </button>
                 </section>
             </div>
@@ -663,7 +666,7 @@
                 fontColor: '#e6c8fe',
                 shadowColor: 'rgba(0, 0, 0, 0.9)',
                 shadowBlur: 20
-            }},
+            },
             'wida-two': {{
                 imgId: 'img-wida-two',
                 nameX: 0.50,
@@ -672,33 +675,38 @@
                 fontColor: '#e6c8fe',
                 shadowColor: 'rgba(0, 0, 0, 0.9)',
                 shadowBlur: 20
-            }}
-        }};
+            }
+        };
         
         let selectedTemplate = 'wida-one';
         
         /* ═══════════════════════════════════════════════════════════════
            INITIALIZATION
            ═══════════════════════════════════════════════════════════════ */
-        window.addEventListener('load', () => {{
+        window.addEventListener('load', () => {
             initThumbnails();
             document.getElementById('name-input').focus();
-        }});
+        });
         
-        function initThumbnails() {{
+        function initThumbnails() {
             createThumbnail('img-wida-one', 'thumb-one');
             createThumbnail('img-wida-two', 'thumb-two');
-        }}
+        }
         
-        function createThumbnail(imgId, canvasId) {{
+        function createThumbnail(imgId, canvasId) {
             const img = document.getElementById(imgId);
             const canvas = document.getElementById(canvasId);
             const ctx = canvas.getContext('2d');
             
-            const render = () => {{
-                const w = canvas.parentElement.offsetWidth;
+            const render = () => {
+                const w = canvas.parentElement.offsetWidth || 400;
                 canvas.width = w * 2;
                 canvas.height = 560;
+                
+                if (!img.width || !img.height) {
+                    console.error('Image not loaded:', imgId);
+                    return;
+                }
                 
                 const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
                 const x = (canvas.width - img.width * scale) / 2;
@@ -706,38 +714,42 @@
                 
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
-            }};
+            };
             
-            if (img.complete) render();
-            else img.onload = render;
-        }}
+            if (img.complete && img.naturalWidth > 0) {
+                render();
+            } else {
+                img.onload = render;
+                img.onerror = () => console.error('Failed to load image:', imgId);
+            }
+        }
         
         /* ═══════════════════════════════════════════════════════════════
            TEMPLATE SELECTION
            ═══════════════════════════════════════════════════════════════ */
-        function selectTemplate(template) {{
+        function selectTemplate(template) {
             selectedTemplate = template;
             
-            document.querySelectorAll('.template-card').forEach(card => {{
+            document.querySelectorAll('.template-card').forEach(card => {
                 card.classList.remove('active');
-            }});
+            });
             
-            document.querySelector(`[data-template="${{template}}"]`).classList.add('active');
-        }}
+            document.querySelector(`[data-template="${template}"]`).classList.add('active');
+        }
         
         /* ═══════════════════════════════════════════════════════════════
            CARD GENERATION
            ═══════════════════════════════════════════════════════════════ */
-        function generateCard() {{
+        function generateCard() {
             const name = document.getElementById('name-input').value.trim();
             
-            if (!name) {{
+            if (!name) {
                 const input = document.getElementById('name-input');
                 input.focus();
                 input.style.borderColor = '#ef4444';
                 setTimeout(() => input.style.borderColor = '', 2000);
                 return;
-            }}
+            }
             
             const config = TEMPLATES[selectedTemplate];
             const img = document.getElementById(config.imgId);
@@ -750,7 +762,7 @@
             ctx.drawImage(img, 0, 0);
             
             const fontSize = Math.floor(canvas.height * config.fontScale);
-            ctx.font = `700 ${{fontSize}}px WidaFont, sans-serif`;
+            ctx.font = `700 ${fontSize}px WidaFont, sans-serif`;
             ctx.fillStyle = config.fontColor;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
@@ -765,30 +777,30 @@
             document.getElementById('preview-placeholder').style.display = 'none';
             canvas.classList.add('visible');
             document.getElementById('download-btn').classList.add('visible');
-        }}
+        }
         
         /* ═══════════════════════════════════════════════════════════════
            DOWNLOAD
            ═══════════════════════════════════════════════════════════════ */
-        function downloadCard() {{
+        function downloadCard() {
             const canvas = document.getElementById('preview-canvas');
             const name = document.getElementById('name-input').value.trim();
             
-            canvas.toBlob(blob => {{
+            canvas.toBlob(blob => {
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
-                link.download = `wida-ramadan-${{selectedTemplate}}-${{name || 'card'}}.jpg`;
+                link.download = `wida-ramadan-${selectedTemplate}-${name || 'card'}.jpg`;
                 link.click();
                 URL.revokeObjectURL(link.href);
-            }}, 'image/jpeg', 0.95);
-        }}
+            }, 'image/jpeg', 0.95);
+        }
         
         /* ═══════════════════════════════════════════════════════════════
            KEYBOARD SHORTCUTS
            ═══════════════════════════════════════════════════════════════ */
-        document.getElementById('name-input').addEventListener('keypress', e => {{
+        document.getElementById('name-input').addEventListener('keypress', e => {
             if (e.key === 'Enter') generateCard();
-        }});
+        });
     </script>
 </body>
 </html>
