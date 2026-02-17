@@ -33,43 +33,31 @@
 const TEMPLATES = {
     'wida-one': {
         imgId: 'img-wida-one',
-
-        // حجم الخط: 0.12 = كبير جداً
-        fontScale: 0.12,
-
+        // حجم الخط: 0.035 = صغير
+        fontScale: 0.035,
         // موقع الكلام أفقياً: 0.5 = في المنتصف
         nameX: 0.5,
-
         // موقع الكلام رأسياً: 0.84 = تحت خالص (قريب من آخر الصورة)
         nameY: 0.84,
-
         // لون الخط: أبيض
         fontColor: '#FFFFFF',
-
         // لون الظل: أسود شفاف
         shadowColor: 'rgba(0, 0, 0, 0.8)',
-
         // مدى انتشار الظل: 20 = ظل واضح
         shadowBlur: 20
     },
     'wida-two': {
         imgId: 'img-wida-two',
-
-        // حجم الخط: 0.09 = متوسط
-        fontScale: 0.09,
-
+        // حجم الخط: 0.035 = صغير
+        fontScale: 0.035,
         // موقع الكلام أفقياً: 0.5 = في المنتصف
         nameX: 0.5,
-
-        // موقع الكلام رأسياً: 0.71 = في النص السفلي تقريباً
-        nameY: 0.71,
-
+        // موقع الكلام رأسياً: 0.80 = في النص السفلي تقريباً
+        nameY: 0.80,
         // لون الخط: أبيض
         fontColor: '#FFFFFF',
-
         // لون الظل: أسود شفاف
         shadowColor: 'rgba(0, 0, 0, 0.8)',
-
         // مدى انتشار الظل: 25 = ظل أوضح شوية
         shadowBlur: 25
     }
@@ -136,8 +124,9 @@ function generateCard() {
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
 
-        ctx.shadowColor = config.shadowColor;
-        ctx.shadowBlur = config.shadowBlur;
+        // NO SHADOW - شيلنا الظل
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
         ctx.shadowOffsetX = 0;
         ctx.shadowOffsetY = 0;
 
